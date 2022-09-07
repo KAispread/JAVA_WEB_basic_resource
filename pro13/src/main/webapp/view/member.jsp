@@ -38,8 +38,33 @@
 		</tr>
 		<%
 			} else {
+				for (MemberBean mem: memberList) {
+					
 		%>
-		
+			<tr align="center">
+				<td>
+					<%=mem.getId() %>
+				</td>
+				<td>
+					<%=mem.getPwd() %>
+				</td>
+				<td>
+					<%=mem.getName() %>
+				</td>
+				<td>
+					<%=mem.getEmail() %>
+				</td>
+				<td>
+					<%=mem.getJoinDate() %>
+				</td>
+			</tr>
+		<%
+				}
+			}
+		%>
+			<tr height="1" bgcolor="#99ccff">
+				<td colspan="5"></td>
+			</tr>
 	</table>
 </body>
 </html>
