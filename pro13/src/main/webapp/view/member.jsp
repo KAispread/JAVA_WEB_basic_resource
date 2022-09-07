@@ -4,11 +4,12 @@
     pageEncoding="UTF-8"%>
 
 <%
+	request.setCharacterEncoding("utf-8");
 	String id = (String) request.getParameter("id");
 	String pwd = (String) request.getParameter("pwd");
 	String name = (String) request.getParameter("name");
 	String email = (String) request.getParameter("email");
-	MemberBean bean = new MemberBean(id, pwd, name, email);
+	MemberBean bean = new MemberBean(id, pwd, email, name);
 	MemberDAO dao = new MemberDAO();
 	dao.addMember(bean);
 	List<MemberBean> memberList = dao.getListMembers();
