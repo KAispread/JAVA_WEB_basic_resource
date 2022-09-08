@@ -2,18 +2,18 @@
     import="sec01.ex01.*"
     import="java.util.*"
     pageEncoding="UTF-8"%>
-
 <%
 	request.setCharacterEncoding("utf-8");
-	String id = (String) request.getParameter("id");
-	String pwd = (String) request.getParameter("pwd");
-	String name = (String) request.getParameter("name");
-	String email = (String) request.getParameter("email");
-	MemberBean bean = new MemberBean(id, pwd, email, name);
-	MemberDAO dao = new MemberDAO();
+%>
+
+<jsp:useBean id="bean" class="sec01.ex01.MemberBean" scope="page"/>
+<jsp:useBean id="dao" class="sec01.ex01.MemberDAO" scope="page"/>
+<jsp:setProperty name="bean" property="*"/>
+<%
 	dao.addMember(bean);
 	List<MemberBean> memberList = dao.getListMembers();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,6 @@
 			<td width="5%">비밀번호</td>
 			<td width="5%">이름</td>
 			<td width="11%">이메일</td>
-			<td width="5%">가입일</td>
 		</tr>
 		<%
 			if (memberList.size() == 0) {
@@ -44,16 +43,16 @@
 		%>
 			<tr align="center">
 				<td>
-					<%=mem.getId() %>
+					<jsp:getProperty name="bean" property="id" />
 				</td>
 				<td>
-					<%=mem.getPwd() %>
+					<jsp:getProperty name="bean" property="pwd" />
 				</td>
 				<td>
-					<%=mem.getName() %>
+					<jsp:getProperty name="bean" property="name" />
 				</td>
 				<td>
-					<%=mem.getEmail() %>
+					<jsp:getProperty name="bean" property="email" />
 				</td>
 				<td>
 					<%=mem.getJoinDate() %>
