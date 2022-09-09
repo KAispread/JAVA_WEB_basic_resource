@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ID 선택자 연습 2</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	function addHtml() {
+		$("#article").html('안녕하세요' + '<br>');
+	}
+	function addImage() {
+		$(".class1").html("<img src='../image/duke.png'>");
+	}
+	function addImage2() {
+		$("div").html("<img src='../image/duke.png'>");
+	}
+	function fn_process() {
+		let value = $("#t_input").val();
+		$("#t_output").val(value);
+	}
+</script>
+</head>
+<body>
+	<div>
+		<p id="article"></p>
+	</div>
+	<input type="button" value="추가하기" onClick="addHtml()" />
+	<p>------------------------------------------</p>
+	<div class="class1"></div>
+	<div class="class1"></div>
+	<input type="button" value="이미지 추가하기" onClick="addImage()" />
+	<p>------------------------------------------</p>
+	<div></div>
+	<input type="button" value="이미지 추가하기" onClick="addImage2()" />
+	<p>------------------------------------------</p>
+	<input type="text" id="t_input" />
+	<input type="button" value="입력하기" onClick="fn_process()" /><br><br>
+	<div>
+		결과 : <input type="text" id="t_output" disabled />
+	</div>
+</body>
+</html>
