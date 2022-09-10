@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax 연습 3</title>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+function fn_process() {
+	$.ajax({
+		type:"get",
+		dataType:"text",
+		async:false,
+		url:"http://localhost:8080/pro16/member",
+		data: {id: $('#id').val()},
+		success:function (data, textStatus) {
+			if (data == 'usable') {
+				$('#message').text("ID available");
+				$('#btn_duplicate').prop("disabled", true);
+			} else {
+				$('#message').text("ID unusable");
+			}
+		},
+		error:function(data, testStatus) {
+			alert("에러가 발생했습니다.");
+		},
+		complete:function(data, textStatus) {
+			alert("작업을 완료했습니다.");
+		}
+	})
+}
+</script>
+</head>
+<body>
+	<h3>ID를 입력하세요</h3>
+	<input type="text" id="id"/>
+	<input type="button" id="btn_duplicate" value="ID 중복체크하기" onClick="fn_process()" /><br>
+	<div id="message"></div>
+</body>
+</html>
